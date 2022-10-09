@@ -9,15 +9,61 @@ import UIKit
 
 final class WelcomeViewController: UIViewController {
     private let commentLabel = UILabel()
+    private let commentView = UIView()
     private let valueLabel = UILabel()
     private var value: Int = 0
     
-    let incrementButton = UIButton()
+    private let incrementButton = UIButton()
+    private let buttonsSV = UIStackView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupMenuButtons()
+    }
+    
+    let colorPaletteView = ColorPaletteView()
+    
+    private func setupView() {
+        view.backgroundColor = .systemGray6
+        commentView.isHidden = true
+        colorPaletteView.isHidden = true
+        setupIncrementButton()
+        setupValueLabel()
+        setupMenuButtons()
+        setupColorControlSV()
+    }
+    
+    private func setupColorControlSV() {
+        colorPaletteView.isHidden = true
+        self.view.addSubview(colorPaletteView)
+        colorPaletteView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            colorPaletteView.topAnchor.constraint(equalTo:
+                                                    incrementButton.bottomAnchor, constant: 8),
+            colorPaletteView.leadingAnchor.constraint(equalTo:
+                                                        view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            colorPaletteView.trailingAnchor.constraint(equalTo:
+                                                        view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            //colorPaletteView.bottomAnchor.constraint(equalTo:
+                                                        //buttonsSV.topAnchor, constant: -8)
+        ])
+        colorPaletteView.addTarget(self, action: #selector(changeColor(_:)), for: .touchDragInside)
+    }
+    
+    @objc
+    private func paletteButtonPressed() {
+        colorPaletteView.isHidden.toggle()
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+    }
+    
+    @objc
+    private func changeColor(_ slider: ColorPaletteView) {
+        UIView.animate(withDuration: 0.5) {
+            self.view.backgroundColor = slider.chosenColor
+        }
     }
     
     private func makeMenuButton(title: String) -> UIButton {
@@ -38,9 +84,12 @@ final class WelcomeViewController: UIViewController {
         let colorsButton = makeMenuButton(title: "🎨")
         let notesButton = makeMenuButton(title: "📔")
         let newsButton = makeMenuButton(title: "🗞")
-        
         let buttonsSV = UIStackView(arrangedSubviews:
                                         [colorsButton, notesButton, newsButton])
+        
+        colorsButton.addTarget(self, action:
+                                #selector(paletteButtonPressed), for: .touchUpInside)
+        
         buttonsSV.spacing = 12
         buttonsSV.axis = .horizontal
         buttonsSV.distribution = .fillEqually
@@ -76,23 +125,10 @@ final class WelcomeViewController: UIViewController {
         valueLabel.pinCenter(to: self.view.centerXAnchor)
     }
     
-    private func setupView() {
-        view.backgroundColor = .systemGray6
-        setupIncrementButton()
-        setupValueLabel()
-        view.addSubview(setupCommentView())
-    }
-    
-    private func updateUI() {
-        valueLabel.text = "\(value)"
-        updateCommentLabel(value: value)
-    }
-    
     private func setupCommentView() -> UIView {
-        let commentView = UIView()
         commentView.backgroundColor = .white
         commentView.layer.cornerRadius = 12
-        view.addSubview(commentView)
+        self.view.addSubview(commentView)
         commentView.pinTop(to:
                             self.view.safeAreaLayoutGuide.topAnchor)
         commentView.pin(to: self.view, [.left: 24, .right: 24])
@@ -107,31 +143,8 @@ final class WelcomeViewController: UIViewController {
         return commentView
     }
     
-    func updateCommentLabel(value: Int) {
-        switch value {
-        case 0...10:
-            commentLabel.text = "oh yeah yeah keep tapping"
-        case 10...20:
-            commentLabel.text = "and more and more"
-        case 20...30:
-            commentLabel.text = "way to go!!!"
-        case 30...40:
-            commentLabel.text = "oh yeah big numbers here"
-        case 40...50:
-            commentLabel.text = "damn more than 40 times keep going"
-        case 50...60:
-            commentLabel.text = "big boy!!"
-        case 60...70:
-            commentLabel.text = "you will see stars if you tap 10 more times"
-        case 70...80:
-            commentLabel.text = "⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐"
-        case 80...90:
-            commentLabel.text = "80+\n go higher!"
-        case 90...100:
-            commentLabel.text = "90!! here are hearts for you ❤️❤️❤️"
-        default:
-            break
-        }
+    private func updateUI() {
+        valueLabel.text = "\(value)"
     }
     
     @objc
@@ -141,8 +154,6 @@ final class WelcomeViewController: UIViewController {
         let generator = UIImpactFeedbackGenerator(style: .light)
         generator.impactOccurred()
         
-        UIView.animate(withDuration: 1) {
-            self.updateUI()
-        }
+        self.updateUI()
     }
 }
