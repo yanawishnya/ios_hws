@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		3C129BA828F343FE00CC85D5 /* ColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C129BA728F343FE00CC85D5 /* ColorPaletteView.swift */; };
 		3C129BAA28F3454E00CC85D5 /* ColorPaletteView+Sliders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C129BA928F3454E00CC85D5 /* ColorPaletteView+Sliders.swift */; };
+		3C2CAB702905CBA900AD1DA0 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CAB6F2905CBA900AD1DA0 /* NewsListViewController.swift */; };
+		3C2CAB722905CF1700AD1DA0 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CAB712905CF1700AD1DA0 /* NewsCell.swift */; };
+		3C2CAB742905D80B00AD1DA0 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CAB732905D80B00AD1DA0 /* NewsViewModel.swift */; };
+		3C2CAB762905DA3F00AD1DA0 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CAB752905DA3F00AD1DA0 /* ApiService.swift */; };
+		3C2CAB782905ED5D00AD1DA0 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2CAB772905ED5D00AD1DA0 /* NewsViewController.swift */; };
 		3C9659B228DD02F100FDBEC5 /* UIView+Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9659B128DD02F100FDBEC5 /* UIView+Pin.swift */; };
 		3C9659B528DD1CF600FDBEC5 /* CALayer+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9659B428DD1CF600FDBEC5 /* CALayer+Shadow.swift */; };
 		3CA246ED28F35D46008E4C9D /* UIColor+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA246EC28F35D46008E4C9D /* UIColor+Components.swift */; };
@@ -22,6 +27,11 @@
 /* Begin PBXFileReference section */
 		3C129BA728F343FE00CC85D5 /* ColorPaletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteView.swift; sourceTree = "<group>"; };
 		3C129BA928F3454E00CC85D5 /* ColorPaletteView+Sliders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPaletteView+Sliders.swift"; sourceTree = "<group>"; };
+		3C2CAB6F2905CBA900AD1DA0 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
+		3C2CAB712905CF1700AD1DA0 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		3C2CAB732905D80B00AD1DA0 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		3C2CAB752905DA3F00AD1DA0 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		3C2CAB772905ED5D00AD1DA0 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		3C9659B128DD02F100FDBEC5 /* UIView+Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Pin.swift"; sourceTree = "<group>"; };
 		3C9659B428DD1CF600FDBEC5 /* CALayer+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Shadow.swift"; sourceTree = "<group>"; };
 		3CA246EC28F35D46008E4C9D /* UIColor+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Components.swift"; sourceTree = "<group>"; };
@@ -50,6 +60,8 @@
 			children = (
 				3CE6540728D4B29F00F8EAF6 /* ViewController.swift */,
 				3C129BA728F343FE00CC85D5 /* ColorPaletteView.swift */,
+				3C2CAB6F2905CBA900AD1DA0 /* NewsListViewController.swift */,
+				3C2CAB772905ED5D00AD1DA0 /* NewsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -88,6 +100,9 @@
 		3CE6541728D4B2C800F8EAF6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3C2CAB712905CF1700AD1DA0 /* NewsCell.swift */,
+				3C2CAB732905D80B00AD1DA0 /* NewsViewModel.swift */,
+				3C2CAB752905DA3F00AD1DA0 /* ApiService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,10 +190,15 @@
 			files = (
 				3C9659B228DD02F100FDBEC5 /* UIView+Pin.swift in Sources */,
 				3CA246ED28F35D46008E4C9D /* UIColor+Components.swift in Sources */,
+				3C2CAB762905DA3F00AD1DA0 /* ApiService.swift in Sources */,
 				3CE6540828D4B29F00F8EAF6 /* ViewController.swift in Sources */,
 				3C9659B528DD1CF600FDBEC5 /* CALayer+Shadow.swift in Sources */,
+				3C2CAB722905CF1700AD1DA0 /* NewsCell.swift in Sources */,
+				3C2CAB782905ED5D00AD1DA0 /* NewsViewController.swift in Sources */,
 				3C129BAA28F3454E00CC85D5 /* ColorPaletteView+Sliders.swift in Sources */,
+				3C2CAB742905D80B00AD1DA0 /* NewsViewModel.swift in Sources */,
 				3CE6540428D4B29F00F8EAF6 /* AppDelegate.swift in Sources */,
+				3C2CAB702905CBA900AD1DA0 /* NewsListViewController.swift in Sources */,
 				3C129BA828F343FE00CC85D5 /* ColorPaletteView.swift in Sources */,
 				3CE6540628D4B29F00F8EAF6 /* SceneDelegate.swift in Sources */,
 			);
