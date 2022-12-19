@@ -95,15 +95,5 @@ final class NewsViewController: UIViewController {
     func goBack() {
         self.navigationController?.popViewController(animated: true)
     }
-    
-}
-
-extension NewsListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if !isLoading {
-            let newsVC = NewsViewController()
-            navigationController?.pushViewController(newsVC, animated: true)
-        }
-    }
 }
         

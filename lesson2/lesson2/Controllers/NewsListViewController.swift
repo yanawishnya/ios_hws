@@ -7,14 +7,13 @@
 
 import UIKit
 
-final class NewsListViewController: UIViewController {
+final class NewsListViewController: UIViewController, UITableViewDelegate {
     private var tableView = UITableView(frame: .zero, style: .plain)
     var isLoading = false
     private var newsViewModels = [NewsViewModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -24,10 +23,15 @@ final class NewsListViewController: UIViewController {
     }
     
     private func configureTableView() {
+        setRefreshButton()
         setTableViewUI()
         setTableViewDelegate()
         setTableViewCell()
         fetchNews()
+    }
+    
+    private func setRefreshButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchNews))
     }
     
     private func setTableViewDelegate() {
@@ -55,6 +59,7 @@ final class NewsListViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc
     private func fetchNews() {
         ApiService.shared.getTopStories { [weak self] result in
             switch result {
@@ -108,13 +113,3 @@ extension NewsListViewController: UITableViewDataSource {
         }
     }
 }
-
-//extension NewsListViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if !isLoading {
-//            let newsVC = NewsViewController()
-//            newsVC.configure(with: newsViewModels[indexPath.row])
-//            navigationController?.pushViewController(newsVC, animated: true)
-//        }
-//    }
-//}
